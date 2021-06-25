@@ -8,6 +8,14 @@
   },
   "permissions": ["storage", "activeTab", "scripting"],
   "action": {
+    "default_title": "Make this page red",
     "default_popup": "popup.html"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["map.js", "content.js"],
+      "css": ["content.css"]
+    }
+  ]
 }

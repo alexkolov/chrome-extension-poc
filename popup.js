@@ -6,10 +6,12 @@
         'Ein Jahr gratis testen': 'Zwei Jahre gratis testen',
         'Ab 39,95 €/Monat': 'für immer kostenlos',
         'Bürgerinnen und Bürger': 'Bürger',
-        'Pflegende': 'Pfleger',
+        Pflegende: 'Pfleger',
         'Rentnerinnen und Rentner': 'Rentner',
-        'Bundeskanzlerin': 'Bundeskanzler',
-      }
+        Bundeskanzlerin: 'Bundeskanzler',
+        'Die Kanzlerin': 'Der Kanzler',
+        'der Kanzlerin': 'des Kanzlers',
+      },
     }[mode]
 
     let html = document.body.innerHTML
@@ -32,6 +34,15 @@ async function onExecuteHandler() {
   }
 
   chrome.scripting.executeScript(script)
+
+  const css = 'body { border: 20px dotted pink; }'
+
+  try {
+    await chrome.tabs.insertCSS(tab.id, { code: css })
+    console.log(css)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 executeButton.addEventListener('click', onExecuteHandler)
