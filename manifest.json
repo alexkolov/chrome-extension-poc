@@ -1,21 +1,28 @@
 {
   "name": "Language Extention",
-  "description": "Make Language Greate Again!",
-  "version": "0.1",
+  "description": "Make Web Greate Again!",
+  "version": "0.2",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
   },
   "permissions": ["storage", "activeTab", "scripting"],
   "action": {
-    "default_title": "Make this page red",
-    "default_popup": "popup.html"
+    "default_title": "My Popup",
+    "default_popup": "action/popup.html"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["map.js", "content.js"],
-      "css": ["content.css"]
+      "js": ["content/content.js"],
+      "css": ["content/content.css"],
+      "run_at": "document_end"
     }
-  ]
+  ],
+  "options_ui": {
+    "page": "options/options.html"
+  },
+  "content_security_policy": {
+    "isolated_world": "default-src 'self'; style-src 'self' 'unsafe-inline'"
+  }
 }

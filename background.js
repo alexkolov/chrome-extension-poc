@@ -1,7 +1,8 @@
-const mode = 'clean'
+const mode = 'cheap' // 'expensive' 'neutral'
 
 function onInstalledHandler() {
-  chrome.storage.sync.set({ mode })
+  console.log('in background onInstalledHandler')
+  // chrome.storage.sync.set({ mode })
 }
 
 chrome.runtime.onInstalled.addListener(onInstalledHandler)
